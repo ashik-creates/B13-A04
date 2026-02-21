@@ -7,7 +7,107 @@
     <!-- tailwind -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
-  <body class="max-w-[80%] mx-auto">
-    <h2>hello</h2>
+  <body class="max-w-[80%] mx-auto my-16 bg-gray-100">
+    <header class="space-y-3">
+      <h1 class="text-5xl font-bold">Job Application Tracker</h1>
+      <div class="grid grid-cols-3 gap-4">
+        <div class="p-5 bg-white rounded-lg">
+          <p>Total</p>
+          <p id="total" class="font-bold text-2xl">0</p>
+        </div>
+        <div class="p-5 bg-white rounded-lg">
+          <p>Interview</p>
+          <p id="interview" class="font-bold text-2xl text-green-400">0</p>
+        </div>
+        <div class="p-5 bg-white rounded-lg">
+          <p>Rejected</p>
+          <p id="rejected" class="font-bold text-2xl text-red-400">0</p>
+        </div>
+      </div>
+    </header>
+    <hr class="my-7 text-gray-400" />
+
+    <main>
+      <!-- available job section  -->
+      <section class="space-y-6">
+        <div class="flex justify-between">
+          <h1 class="text-2xl font-bold">Available jobs</h1>
+          <p class="text-[#64748B]"><span id="jobs-count">8</span> jobs</p>
+        </div>
+        <!-- three tabs -->
+        <div class="flex gap-2">
+          <button
+            id="all-btn"
+            class="px-5 py-2 cursor-pointer rounded-lg bg-blue-500 text-white"
+          >
+            All
+          </button>
+          <button
+            id="interview-btn"
+            class="px-5 py-2 cursor-pointer bg-white rounded-lg text-[#64748B]"
+          >
+            Interview
+          </button>
+          <button
+            id="rejected-btn"
+            class="px-5 py-2 cursor-pointer bg-white rounded-lg text-[#64748B]"
+          >
+            Rejected
+          </button>
+        </div>
+      </section>
+      <!-- all cards  -->
+      <section class="mt-6">
+        <div id="all-cards" class="space-y-5">
+          <!-- <div class="card p-3.5 bg-white flex justify-between">
+            <div class="space-y-4">
+              <div>
+                <h2 class="company-name text-2xl font-medium">
+                  Mobile First Corp
+                </h2>
+                <p class="position text-[18px] text-[#64748B]">
+                  React Native Developer
+                </p>
+              </div>
+              <p class="flex items-center gap-1 text-[#64748B]">
+                <span class="location">Remote</span> •
+                <span class="type">Full-time</span> •
+                <span class="salary">$130,000 - $175,000</span>
+              </p>
+              <div>
+                <p
+                  class="status bg-gray-200 inline-block p-2 rounded-lg font-medium"
+                >
+                  NOT APPLIED
+                </p>
+                <p class="description">
+                  Build cross-platform mobile applications using React Native.
+                  Work on products used by millions of users worldwide.
+                </p>
+              </div>
+              <div class="flex gap-2.5">
+                <button
+                  class="interview-btns px-4 py-2 rounded-lg border border-green-400 text-green-400 cursor-pointer hover:bg-green-400 hover:text-white"
+                >
+                  INTERVIEW
+                </button>
+                <button
+                  class="rejected-btns px-4 py-2 rounded-lg border border-red-400 text-red-400 cursor-pointer hover:bg-red-400 hover:text-white"
+                >
+                  REJECTED
+                </button>
+              </div>
+            </div>
+            <div>
+              <button>
+                <img src="images/del-btn.png" alt="" />
+              </button>
+            </div>
+          </div> -->
+        </div>
+      </section>
+    </main>
+
+    <script src="scripts/jobs.js"></script>
   </body>
 </html>
