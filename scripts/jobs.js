@@ -1,4 +1,4 @@
-const jobList = [
+let jobList = [
   {
     company: "Mobile First Corp",
     position: "React Native Developer",
