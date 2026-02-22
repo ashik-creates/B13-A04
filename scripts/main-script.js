@@ -144,7 +144,7 @@ function renderInterview() {
       "card p-3.5 bg-white flex flex-col items-center justify-between gap-3";
     div.innerHTML = `
                   <div>
-                      <img src="../images/jobs.png" alt="">
+                      <img src="images/jobs.png" alt="">
                   </div>
                   <h3 class="font-semibold text-2xl">
                       No jobs available
@@ -212,7 +212,7 @@ function renderRejected() {
       "card p-3.5 bg-white flex flex-col items-center justify-between gap-3";
     div.innerHTML = `
                   <div>
-                      <img src="../images/jobs.png" alt="">
+                      <img src="images/jobs.png" alt="">
                   </div>
                   <h3 class="font-semibold text-2xl">
                       No jobs available
