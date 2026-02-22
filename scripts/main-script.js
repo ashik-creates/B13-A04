@@ -12,14 +12,13 @@ function calculateCount() {
   total.innerText = jobList.length;
   interview.innerText = interviewList.length;
   rejected.innerText = rejectedList.length;
-  jobsCount.innerText = jobList.length;
 
   if(currentStatus == 'interview-btn'){
     if(interviewList.length == 0){
         jobsCount.innerText = interviewList.length
     }
     else{
-        jobsCount.innerHTML = `<span>${interviewList.length} of ${jobList.length} </span>`
+        jobsCount.innerText = `${interviewList.length} of ${jobList.length} `
     }
   }
   else if(currentStatus == 'rejected-btn'){
@@ -27,8 +26,11 @@ function calculateCount() {
         jobsCount.innerText = rejectedList.length
     }
     else{
-        jobsCount.innerHTML = `<span>${rejectedList.length} of ${jobList.length} </span>`
+        jobsCount.innerText = `${rejectedList.length} of ${jobList.length}`
     }
+  }
+  else{
+    jobsCount.innerText = jobList.length;
   }
 
 }
@@ -82,6 +84,7 @@ mainElement.addEventListener("click", function (event) {
     const company = parentNode.querySelector(".company-name").innerText;
     const jobDetails = jobList.find((item) => item.company == company);
     jobDetails.status = "INTERVIEW";
+    
     const existingItem = interviewList.find((item) => item.company == company);
 
     if (!existingItem) {
@@ -105,11 +108,6 @@ mainElement.addEventListener("click", function (event) {
     console.log(jobDetails.status);
     jobDetails.status = "REJECTED";
     console.log(jobDetails.status);
-
-    let statusStyle = parentNode.querySelector(".status");
-    console.log(statusStyle);
-    statusStyle.classList.remove("bg-gray-200");
-    statusStyle.classList.add("bg-green-400", "text-white");
 
     const existingItem = rejectedList.find((item) => item.company == company);
 
