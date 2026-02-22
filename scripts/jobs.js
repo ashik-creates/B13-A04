@@ -101,7 +101,8 @@ function renderAll() {
     }
 
     let div = document.createElement("div");
-    div.className = "card p-3.5 bg-white flex justify-between";
+    
+    div.className = "card p-3.5 bg-white flex flex-col gap-7 sm:flex-row sm:justify-between";
     div.innerHTML = `
     <div class="space-y-4">
               <div>
@@ -110,7 +111,7 @@ function renderAll() {
                 </h2>
                 <p class="position text-[18px] text-[#64748B]">${job.position}</p>
               </div>
-              <p class="flex items-center gap-1 text-[#64748B]">
+              <p class="flex flex-col sm:flex-row gap-1 text-[#64748B]">
                 <span class="location">${job.location}</span> • <span class="type">${job.type}</span> •
                 <span class="salary">${job.salary}</span>
               </p>
@@ -120,7 +121,7 @@ function renderAll() {
                   ${job.description}
                 </p>
               </div>
-              <div class="flex gap-2.5">
+              <div class="flex items-start flex-col sm:flex-row gap-2.5">
                 <button class="interview-btns px-4 py-2 rounded-lg border  border-green-400 text-green-400 cursor-pointer hover:bg-green-400 hover:text-white ">INTERVIEW</button>
                 <button class="rejected-btns px-4 py-2 rounded-lg border  border-red-400 text-red-400 cursor-pointer hover:bg-red-400 hover:text-white"
                 >REJECTED</button>

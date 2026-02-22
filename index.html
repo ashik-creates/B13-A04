@@ -6,11 +6,24 @@
     <title>Document</title>
     <!-- tailwind -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- font  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        font-family: "Geist", sans-serif;
+      }
+    </style>
   </head>
-  <body class="max-w-[80%] mx-auto my-16 bg-gray-100">
+  <body class="max-w-[90%] sm:max-w-[80%] mx-auto my-16 bg-gray-100">
     <header class="space-y-3">
-      <h1 class="text-5xl font-bold">Job Application Tracker</h1>
-      <div class="grid grid-cols-3 gap-4">
+      <h1 class="text-4xl sm:text-5xl font-bold">Job Application Tracker</h1>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div class="p-5 bg-white rounded-lg">
           <p>Total</p>
           <p id="total" class="font-bold text-2xl">0</p>
@@ -30,26 +43,28 @@
     <main>
       <!-- available job section  -->
       <section class="space-y-6">
-        <div class="flex justify-between">
+        <div class="flex flex-col sm:flex-row gap-3 sm:justify-between">
           <h1 class="text-2xl font-bold">Available jobs</h1>
           <p class="text-[#64748B]"><span id="jobs-count">0</span> jobs</p>
         </div>
         <!-- three tabs -->
-        <div class="flex gap-2">
-          <button onclick="btnStyleToggle('all-btn')"
+        <div class="flex items-start flex-col sm:flex-row gap-2">
+          <button
+            onclick="btnStyleToggle('all-btn')"
             id="all-btn"
-
             class="px-5 py-2 cursor-pointer rounded-lg bg-blue-500 text-white"
           >
             All
           </button>
-          <button onclick="btnStyleToggle('interview-btn')"
+          <button
+            onclick="btnStyleToggle('interview-btn')"
             id="interview-btn"
             class="px-5 py-2 cursor-pointer bg-white rounded-lg text-[#64748B]"
           >
             Interview
           </button>
-          <button onclick="btnStyleToggle('rejected-btn')"
+          <button
+            onclick="btnStyleToggle('rejected-btn')"
             id="rejected-btn"
             class="px-5 py-2 cursor-pointer bg-white rounded-lg text-[#64748B]"
           >
@@ -60,8 +75,8 @@
       <!-- filtered section -->
       <section class="mt-5">
         <div id="filtered-section" class="space-y-5 hidden">
-            <div class="card p-3.5 bg-white flex flex-col items-center justify-between gap-3">
-                <!-- <div>
+          <!-- <div class="card p-3.5 bg-white flex flex-col items-center justify-between gap-3">
+                <div>
                     <img src="images/jobs.png" alt="">
                 </div>
                 <h3 class="font-semibold text-2xl">
@@ -69,8 +84,8 @@
                 </h3>
                 <p class="text-[#64748B]">
                     Check back soon for new job opportunities
-                </p> -->
-            </div>
+                </p>
+            </div> -->
         </div>
       </section>
 

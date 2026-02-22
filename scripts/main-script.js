@@ -13,26 +13,21 @@ function calculateCount() {
   interview.innerText = interviewList.length;
   rejected.innerText = rejectedList.length;
 
-  if(currentStatus == 'interview-btn'){
-    if(interviewList.length == 0){
-        jobsCount.innerText = interviewList.length
+  if (currentStatus == "interview-btn") {
+    if (interviewList.length == 0) {
+      jobsCount.innerText = interviewList.length;
+    } else {
+      jobsCount.innerText = `${interviewList.length} of ${jobList.length} `;
     }
-    else{
-        jobsCount.innerText = `${interviewList.length} of ${jobList.length} `
+  } else if (currentStatus == "rejected-btn") {
+    if (rejectedList.length == 0) {
+      jobsCount.innerText = rejectedList.length;
+    } else {
+      jobsCount.innerText = `${rejectedList.length} of ${jobList.length}`;
     }
-  }
-  else if(currentStatus == 'rejected-btn'){
-    if(rejectedList.length == 0){
-        jobsCount.innerText = rejectedList.length
-    }
-    else{
-        jobsCount.innerText = `${rejectedList.length} of ${jobList.length}`
-    }
-  }
-  else{
+  } else {
     jobsCount.innerText = jobList.length;
   }
-
 }
 
 calculateCount();
@@ -84,13 +79,12 @@ mainElement.addEventListener("click", function (event) {
     const company = parentNode.querySelector(".company-name").innerText;
     const jobDetails = jobList.find((item) => item.company == company);
     jobDetails.status = "INTERVIEW";
-    
+
     const existingItem = interviewList.find((item) => item.company == company);
 
     if (!existingItem) {
       interviewList.push(jobDetails);
 
-      console.log(interviewList);
     }
 
     rejectedList = rejectedList.filter((item) => item.company != company);
@@ -105,9 +99,8 @@ mainElement.addEventListener("click", function (event) {
     const company = parentNode.querySelector(".company-name").innerText;
 
     const jobDetails = jobList.find((item) => item.company == company);
-    console.log(jobDetails.status);
+
     jobDetails.status = "REJECTED";
-    console.log(jobDetails.status);
 
     const existingItem = rejectedList.find((item) => item.company == company);
 
@@ -127,32 +120,29 @@ mainElement.addEventListener("click", function (event) {
     renderAll();
   }
 
-  if(deleteBtn){
-    const parentNode = deleteBtn.closest('.card');
+  if (deleteBtn) {
+    const parentNode = deleteBtn.closest(".card");
     const company = parentNode.querySelector(".company-name").innerText;
 
-    jobList = jobList.filter(item => item.company != company);
+    jobList = jobList.filter((item) => item.company != company);
 
-    interviewList = interviewList.filter(item => item.company != company);
+    interviewList = interviewList.filter((item) => item.company != company);
 
-    rejectedList = rejectedList.filter(item => item.company != company);
+    rejectedList = rejectedList.filter((item) => item.company != company);
 
     calculateCount();
-    
-    if(currentStatus == 'interview-btn'){
-        renderInterview();
-    }
-    else if(currentStatus == 'rejected-btn'){
-        renderRejected();
-    }
-    else{
-        renderAll()
+
+    if (currentStatus == "interview-btn") {
+      renderInterview();
+    } else if (currentStatus == "rejected-btn") {
+      renderRejected();
+    } else {
+      renderAll();
     }
   }
 });
 
 let filteredSection = document.getElementById("filtered-section");
-console.log(filteredSection);
 
 function renderInterview() {
   filteredSection.innerHTML = "";
@@ -185,16 +175,17 @@ function renderInterview() {
       }
 
       let div = document.createElement("div");
-      div.className = "card p-3.5 bg-white flex justify-between";
+      div.className =
+        "card p-3.5 bg-white flex flex-col gap-7 sm:flex-row sm:justify-between";
       div.innerHTML = `
-    <div class="space-y-4">
+        <div class="space-y-4">
               <div>
                 <h2 class="company-name text-2xl font-medium">
                   ${job.company}
                 </h2>
                 <p class="position text-[18px] text-[#64748B]">${job.position}</p>
               </div>
-              <p class="flex items-center gap-1 text-[#64748B]">
+              <p class="flex flex-col sm:flex-row gap-1 text-[#64748B]">
                 <span class="location">${job.location}</span> • <span class="type">${job.type}</span> •
                 <span class="salary">${job.salary}</span>
               </p>
@@ -204,19 +195,18 @@ function renderInterview() {
                   ${job.description}
                 </p>
               </div>
-              <div class="flex gap-2.5">
+              <div class="flex items-start flex-col sm:flex-row gap-2.5">
                 <button class="interview-btns px-4 py-2 rounded-lg border  border-green-400 text-green-400 cursor-pointer hover:bg-green-400 hover:text-white ">INTERVIEW</button>
                 <button class="rejected-btns px-4 py-2 rounded-lg border  border-red-400 text-red-400 cursor-pointer hover:bg-red-400 hover:text-white"
                 >REJECTED</button>
               </div>
             </div>
             <div>
-              <button class="delete-btn
-              cursor-pointer">
+              <button class="delete-btn cursor-pointer">
                 <img src="images/del-btn.png" alt="" />
               </button>
             </div>
-    `;
+        `;
       filteredSection.appendChild(div);
     }
   }
@@ -253,16 +243,16 @@ function renderRejected() {
       }
 
       let div = document.createElement("div");
-      div.className = "card p-3.5 bg-white flex justify-between";
+      div.className ="card p-3.5 bg-white flex flex-col gap-7 sm:flex-row sm:justify-between";
       div.innerHTML = `
-    <div class="space-y-4">
+        <div class="space-y-4">
               <div>
                 <h2 class="company-name text-2xl font-medium">
                   ${job.company}
                 </h2>
                 <p class="position text-[18px] text-[#64748B]">${job.position}</p>
               </div>
-              <p class="flex items-center gap-1 text-[#64748B]">
+              <p class="flex flex-col sm:flex-row gap-1 text-[#64748B]">
                 <span class="location">${job.location}</span> • <span class="type">${job.type}</span> •
                 <span class="salary">${job.salary}</span>
               </p>
@@ -272,7 +262,7 @@ function renderRejected() {
                   ${job.description}
                 </p>
               </div>
-              <div class="flex gap-2.5">
+              <div class="flex items-start flex-col sm:flex-row gap-2.5">
                 <button class="interview-btns px-4 py-2 rounded-lg border  border-green-400 text-green-400 cursor-pointer hover:bg-green-400 hover:text-white ">INTERVIEW</button>
                 <button class="rejected-btns px-4 py-2 rounded-lg border  border-red-400 text-red-400 cursor-pointer hover:bg-red-400 hover:text-white"
                 >REJECTED</button>
@@ -283,7 +273,7 @@ function renderRejected() {
                 <img src="images/del-btn.png" alt="" />
               </button>
             </div>
-    `;
+        `;
       filteredSection.appendChild(div);
     }
   }
