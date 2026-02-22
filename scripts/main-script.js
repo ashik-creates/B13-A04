@@ -39,14 +39,11 @@ function btnStyleToggle(id) {
     allCards.classList.remove("hidden");
     filteredSection.classList.add("hidden");
     renderAll();
-  } 
-  else if (id == "interview-btn") {
+  } else if (id == "interview-btn") {
     allCards.classList.add("hidden");
     filteredSection.classList.remove("hidden");
     renderInterview();
-  }
-
-  else if (id == "rejected-btn") {
+  } else if (id == "rejected-btn") {
     allCards.classList.add("hidden");
     filteredSection.classList.remove("hidden");
     renderRejected();
@@ -57,6 +54,8 @@ const mainElement = document.querySelector("main");
 
 mainElement.addEventListener("click", function (event) {
   const parentNode = event.target.parentNode.parentNode;
+
+  const deleteBtn = event.target.closest(".delete-btn");
 
   if (event.target.classList.contains("interview-btns")) {
     const company = parentNode.querySelector(".company-name").innerText;
@@ -80,11 +79,11 @@ mainElement.addEventListener("click", function (event) {
     renderAll();
   } else if (event.target.classList.contains("rejected-btns")) {
     const company = parentNode.querySelector(".company-name").innerText;
-    
+
     const jobDetails = jobList.find((item) => item.company == company);
-    console.log(jobDetails.status)
+    console.log(jobDetails.status);
     jobDetails.status = "REJECTED";
-    console.log(jobDetails.status)
+    console.log(jobDetails.status);
 
     let statusStyle = parentNode.querySelector(".status");
     console.log(statusStyle);
@@ -107,6 +106,29 @@ mainElement.addEventListener("click", function (event) {
 
     calculateCount();
     renderAll();
+  }
+
+  if(deleteBtn){
+    const parentNode = deleteBtn.closest('.card');
+    const company = parentNode.querySelector(".company-name").innerText;
+
+    jobList = jobList.filter(item => item.company != company);
+
+    interviewList = interviewList.filter(item => item.company != company);
+
+    rejectedList = rejectedList.filter(item => item.company != company);
+
+    calculateCount();
+    
+    if(currentStatus == 'interview-btn'){
+        renderInterview();
+    }
+    else if(currentStatus == 'rejected-btn'){
+        renderRejected();
+    }
+    else{
+        renderAll()
+    }
   }
 });
 
@@ -170,7 +192,8 @@ function renderInterview() {
               </div>
             </div>
             <div>
-              <button class="cursor-pointer">
+              <button class="delete-btn
+              cursor-pointer">
                 <img src="images/del-btn.png" alt="" />
               </button>
             </div>
@@ -237,7 +260,7 @@ function renderRejected() {
               </div>
             </div>
             <div>
-              <button class="cursor-pointer">
+              <button class="delete-btn cursor-pointer">
                 <img src="images/del-btn.png" alt="" />
               </button>
             </div>

@@ -127,7 +127,7 @@ function renderAll() {
               </div>
             </div>
             <div>
-              <button class="cursor-pointer">
+              <button class="delete-btn cursor-pointer">
                 <img src="images/del-btn.png" alt="" />
               </button>
             </div>
