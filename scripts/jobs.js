@@ -88,6 +88,18 @@ function renderAll() {
   allCards.innerHTML = "";
 
   for (let job of jobList) {
+
+    let bgColor = ""
+    if(job.status == "NOT APPLIED"){
+        bgColor = "bg-gray-200"
+    }
+    else if(job.status == 'INTERVIEW'){
+        bgColor = "bg-green-400 text-white"
+    }
+    else if (job.status == "REJECTED"){
+        bgColor = "bg-red-400 text-white"
+    }
+
     let div = document.createElement("div");
     div.className = "card p-3.5 bg-white flex justify-between";
     div.innerHTML = `
@@ -103,7 +115,7 @@ function renderAll() {
                 <span class="salary">${job.salary}</span>
               </p>
               <div>
-                <p class="status   bg-gray-200 inline-block p-2 rounded-lg font-medium">${job.status}</p>
+                <p class="status ${bgColor} inline-block p-2 rounded-lg font-medium">${job.status}</p>
                 <p class="description">
                   ${job.description}
                 </p>
