@@ -106,8 +106,7 @@ mainElement.addEventListener("click", function (event) {
 
     if (!existingItem) {
       rejectedList.push(jobDetails);
-
-      console.log(rejectedList);
+      
     }
 
     interviewList = interviewList.filter((item) => item.company != company);
