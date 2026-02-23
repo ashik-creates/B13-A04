@@ -83,30 +83,44 @@ let jobList = [
 
 let allCards = document.getElementById("all-cards");
 
-
 function renderAll() {
   allCards.innerHTML = "";
 
-  for (let job of jobList) {
-
-    let bgColor = ""
-    if(job.status == "NOT APPLIED"){
-        bgColor = "bg-gray-200"
-    }
-    else if(job.status == 'INTERVIEW'){
-        bgColor = "bg-green-400 text-white"
-    }
-    else if (job.status == "REJECTED"){
-        bgColor = "bg-red-400 text-white"
-    }
-
+  if (jobList.length == 0) {
     let div = document.createElement("div");
-    
-    div.className = "card p-3.5 bg-white flex flex-col gap-7 sm:flex-row sm:justify-between";
+    div.className =
+      "card p-3 sm:p-6 bg-white flex flex-col items-center text-center justify-between gap-3";
     div.innerHTML = `
+                  <div>
+                      <img src="images/jobs.png" alt="">
+                  </div>
+                  <h3 class="font-semibold text-2xl">
+                      No jobs available
+                  </h3>
+                  <p class="text-[#64748B]">
+                      Check back soon for new job opportunities
+                  </p>
+      `;
+    allCards.appendChild(div);
+  } else {
+    for (let job of jobList) {
+      let bgColor = "";
+      if (job.status == "NOT APPLIED") {
+        bgColor = "bg-gray-200";
+      } else if (job.status == "INTERVIEW") {
+        bgColor = "bg-green-400 text-white";
+      } else if (job.status == "REJECTED") {
+        bgColor = "bg-red-400 text-white";
+      }
+
+      let div = document.createElement("div");
+
+      div.className =
+        "card p-3 sm:p-6 bg-white flex justify-between";
+      div.innerHTML = `
     <div class="space-y-4">
               <div>
-                <h2 class="company-name text-2xl font-medium">
+                <h2 class="company-name  text-2xl font-medium">
                   ${job.company}
                 </h2>
                 <p class="position text-[18px] text-[#64748B]">${job.position}</p>
@@ -121,20 +135,21 @@ function renderAll() {
                   ${job.description}
                 </p>
               </div>
-              <div class="flex items-start flex-col sm:flex-row gap-2.5">
+              <div class="flex gap-2.5">
                 <button class="interview-btns px-4 py-2 rounded-lg border  border-green-400 text-green-400 cursor-pointer hover:bg-green-400 hover:text-white ">INTERVIEW</button>
                 <button class="rejected-btns px-4 py-2 rounded-lg border  border-red-400 text-red-400 cursor-pointer hover:bg-red-400 hover:text-white"
                 >REJECTED</button>
               </div>
             </div>
             <div>
-              <button class="delete-btn cursor-pointer">
-                <img src="images/del-btn.png" alt="" />
+              <button class="delete-btn cursor-pointer p-2 border border-gray-300 hover:text-red-400 rounded-full">
+                <i class="fa-regular fa-trash-can"></i>
               </button>
             </div>
     `;
-    allCards.appendChild(div);
+      allCards.appendChild(div);
+    }
   }
 }
 
-renderAll()
+renderAll();

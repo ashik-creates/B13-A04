@@ -150,7 +150,7 @@ function renderInterview() {
   if (interviewList.length == 0) {
     let div = document.createElement("div");
     div.className =
-      "card p-3.5 bg-white flex flex-col items-center justify-between gap-3";
+      "card p-3 sm:p-6 bg-white flex flex-col items-center text-center justify-between gap-3";
     div.innerHTML = `
                   <div>
                       <img src="images/jobs.png" alt="">
@@ -176,7 +176,7 @@ function renderInterview() {
 
       let div = document.createElement("div");
       div.className =
-        "card p-3.5 bg-white flex flex-col gap-7 sm:flex-row sm:justify-between";
+        "card p-3 sm:p-6 bg-white flex justify-between";
       div.innerHTML = `
         <div class="space-y-4">
               <div>
@@ -195,15 +195,15 @@ function renderInterview() {
                   ${job.description}
                 </p>
               </div>
-              <div class="flex items-start flex-col sm:flex-row gap-2.5">
+              <div class="flex  gap-2.5">
                 <button class="interview-btns px-4 py-2 rounded-lg border  border-green-400 text-green-400 cursor-pointer hover:bg-green-400 hover:text-white ">INTERVIEW</button>
                 <button class="rejected-btns px-4 py-2 rounded-lg border  border-red-400 text-red-400 cursor-pointer hover:bg-red-400 hover:text-white"
                 >REJECTED</button>
               </div>
             </div>
             <div>
-              <button class="delete-btn cursor-pointer">
-                <img src="images/del-btn.png" alt="" />
+              <button class="delete-btn cursor-pointer p-2 border border-gray-300 hover:text-red-400 rounded-full">
+                <i class="fa-regular fa-trash-can"></i>
               </button>
             </div>
         `;
@@ -218,7 +218,7 @@ function renderRejected() {
   if (rejectedList.length == 0) {
     let div = document.createElement("div");
     div.className =
-      "card p-3.5 bg-white flex flex-col items-center justify-between gap-3";
+      "card p-3 sm:p-6 bg-white flex flex-col items-center text-center justify-between gap-3";
     div.innerHTML = `
                   <div>
                       <img src="images/jobs.png" alt="">
@@ -243,7 +243,7 @@ function renderRejected() {
       }
 
       let div = document.createElement("div");
-      div.className ="card p-3.5 bg-white flex flex-col gap-7 sm:flex-row sm:justify-between";
+      div.className ="card p-3 sm:p-6 bg-white flex justify-between";
       div.innerHTML = `
         <div class="space-y-4">
               <div>
@@ -262,15 +262,15 @@ function renderRejected() {
                   ${job.description}
                 </p>
               </div>
-              <div class="flex items-start flex-col sm:flex-row gap-2.5">
+              <div class="flex  gap-2.5">
                 <button class="interview-btns px-4 py-2 rounded-lg border  border-green-400 text-green-400 cursor-pointer hover:bg-green-400 hover:text-white ">INTERVIEW</button>
                 <button class="rejected-btns px-4 py-2 rounded-lg border  border-red-400 text-red-400 cursor-pointer hover:bg-red-400 hover:text-white"
                 >REJECTED</button>
               </div>
             </div>
             <div>
-              <button class="delete-btn cursor-pointer">
-                <img src="images/del-btn.png" alt="" />
+              <button class="delete-btn cursor-pointer p-2 border border-gray-300 hover:text-red-400 rounded-full">
+                <i class="fa-regular fa-trash-can"></i>
               </button>
             </div>
         `;
